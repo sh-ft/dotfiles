@@ -1,0 +1,29 @@
+[user]
+	name = Shamil Fattakhov
+	email = voidproxy@gmail.com
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore_global
+[color]
+	ui = true
+[push]
+	default = simple
+[alias]
+	s = status
+	b = branch
+	c = commit
+	co = checkout
+	l = log
+	lf = log --pretty=fuller
+	h = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	rc = rebase
+	rc = rebase
+	rc = rebase --continue
+	a = add
+	d = diff
+	up = "!git remote update -p; git merge --ff-only @{u}"
+
+[pull]
+	ff = only
+[diff]
+	submodule = log
