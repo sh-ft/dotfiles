@@ -1,29 +1,47 @@
 [user]
-	name = Shamil Fattakhov
-	email = voidproxy@gmail.com
+  name = Shamil Fattakhov
+  email = voidproxy@gmail.com
+
 [core]
-	editor = vim
-	excludesfile = ~/.gitignore_global
+  editor = vim
+  excludesfile = ~/.gitignore_global
+
 [color]
-	ui = true
-[push]
-	default = simple
+  ui = true
+
 [alias]
-	s = status
-	b = branch
-	c = commit
-	co = checkout
-	l = log
-	lf = log --pretty=fuller
-	h = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-	rc = rebase
-	rc = rebase
-	rc = rebase --continue
-	a = add
-	d = diff
-	up = "!git remote update -p; git merge --ff-only @{u}"
+  s = status -sb
+  b = branch
+  c = commit
+  ca = commit --amend
+  co = checkout
+  l = log
+  lf = log --pretty=fuller
+  h = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  ll = log --date=relative --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%an, %ad)%Creset'
+  rc = rebase
+  rc = rebase
+  rc = rebase --continue
+  a = add
+  d = diff
+  dc = diff --cached
+  up = "!git remote update -p; git merge --ff-only @{u}"
+  pf = push --force-with-lease
+
+[branch]
+  autosetuprebase = always
 
 [pull]
-	ff = only
+  ff = only
+
+[push]
+  default = current
+
+[rebase]
+  autosquash = true
+
 [diff]
-	submodule = log
+  submodule = log
+
+[merge]
+  tool = vimdiff
