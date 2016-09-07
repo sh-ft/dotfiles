@@ -81,9 +81,10 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'justinmk/vim-sneak'
 Bundle 'nelstrom/vim-qargs'
+Bundle 'nathanaelkane/vim-indent-guides'
 
 " statusline (and related)
-Bundle 'bling/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 Bundle 'airblade/vim-gitgutter'
 
 " external applications
@@ -733,13 +734,7 @@ function! CleanupFileConvertToUnixUtf8()
 endfunction
 
 " camelcasemotion
-map w <Plug>CamelCaseMotion_w
-map b <Plug>CamelCaseMotion_b
-map e <Plug>CamelCaseMotion_e
-sunmap w
-sunmap b
-sunmap e
-nmap cw ce
+call camelcasemotion#CreateMotionMappings('<leader>')
 
 
 " STATUSLINE
@@ -780,4 +775,6 @@ function! AirlineThemePatch(palette)
     endfor
   endif
 endfunction
+
+let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
