@@ -26,7 +26,7 @@
   d = diff
   dc = diff --cached
   up = "!git remote update -p; git merge --ff-only @{u}"
-  pf = push --force-with-lease
+  puff = push --force-with-lease
 
 [branch]
   autosetuprebase = always
