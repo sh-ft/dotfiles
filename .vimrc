@@ -33,6 +33,7 @@ Bundle 'tpope/vim-git'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'sheerun/vim-polyglot'
 Bundle 'gkz/vim-ls'
+Bundle 'kylef/apiblueprint.vim'
 
 " Ruby related
 "Bundle 'ecomba/vim-ruby-refactoring'
@@ -677,8 +678,8 @@ nmap <leader>gs :Gstatus<cr>
 nmap <leader>gw :Gwrite<cr>
 
 " ctrlp.vim
-map <leader>t :CtrlP<cr>
-map <leader>b :CtrlPBuffer<cr>
+"map <leader>t :CtrlP<cr>
+"map <leader>b :CtrlPBuffer<cr>
 map <leader>h :CtrlPMRU<cr>
 
 " quit current buffer
