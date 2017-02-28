@@ -34,6 +34,7 @@ Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'sheerun/vim-polyglot'
 Bundle 'gkz/vim-ls'
 Bundle 'kylef/apiblueprint.vim'
+Bundle 'mattn/emmet-vim'
 
 " Ruby related
 "Bundle 'ecomba/vim-ruby-refactoring'
@@ -94,7 +95,7 @@ Bundle 'airblade/vim-gitgutter'
 
 " color schemes
 Bundle 'junegunn/seoul256.vim'
-Bundle 'nanotech/jellybeans.vim'
+Bundle 'flazz/vim-colorschemes'
 
 
 " All of your Plugins must be added before the following line
@@ -153,8 +154,8 @@ set ignorecase smartcase
 " always display current cursor position
 set ruler
 
-" make it obvious where 80 characters is
-set textwidth=100
+" make it obvious where 120 characters is
+set textwidth=120
 set colorcolumn=+1
 
 " display incomplete commands
@@ -168,7 +169,8 @@ set showcmd
 "  let g:seoul256_background = 236
 "  colorscheme seoul256
 "endif
-colorscheme seoul256
+"
+colorscheme hybrid_material
 
 " enable filetype detection and filetype-specific plugins and indenting
 filetype plugin indent on
@@ -476,8 +478,8 @@ vmap <F8> <esc><F8>
 " <F10> to close current buffer but don't close the window (Kwbd.vim)
 nmap <F10> :Kwbd<cr>
 
-" <F11> to toggle the paste mode (when vim either adds or not spaces in the front of lines)
-set pastetoggle=<F11>
+" <F3> to toggle the paste mode (when vim either adds or not spaces in the front of lines)
+set pastetoggle=<F3>
 
 " <F12> to toggle the display of invisible characters ($\t)
 nmap <F12> :set list!<bar>set list?<cr>
