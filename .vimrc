@@ -35,6 +35,7 @@ Bundle 'sheerun/vim-polyglot'
 Bundle 'gkz/vim-ls'
 Bundle 'kylef/apiblueprint.vim'
 Bundle 'mattn/emmet-vim'
+Bundle 'ekalinin/Dockerfile.vim'
 
 " Ruby related
 "Bundle 'ecomba/vim-ruby-refactoring'

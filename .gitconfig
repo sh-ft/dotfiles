@@ -19,14 +19,13 @@
   lf = log --pretty=fuller
   h = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   ll = log --date=relative --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%an, %ad)%Creset'
-  rc = rebase
-  rc = rebase
   rc = rebase --continue
   a = add
   d = diff
   dc = diff --cached
   up = "!git remote update -p; git merge --ff-only @{u}"
   puff = push --force-with-lease
+  chp = cherry-pick
 
 [branch]
   autosetuprebase = always
