@@ -26,6 +26,8 @@
   up = "!git remote update -p; git merge --ff-only @{u}"
   puff = push --force-with-lease
   chp = cherry-pick
+  candidate = merge --no-ff master
+  release = push --force origin candidate:release
 
 [branch]
   autosetuprebase = always

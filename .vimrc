@@ -26,7 +26,8 @@ Bundle 'tpope/vim-git'
 "Bundle 'mmalecki/vim-node.js'
 "Bundle 'mustache/vim-mustache-handlebars'
 "Bundle 'heartsentwined/vim-emblem'
-"Bundle 'pangloss/vim-javascript'
+Bundle 'pangloss/vim-javascript'
+Bundle 'mxw/vim-jsx'
 "Bundle 'slim-template/vim-slim'
 "Bundle 'tpope/vim-haml'
 "Bundle 'tpope/vim-markdown'
@@ -36,6 +37,7 @@ Bundle 'gkz/vim-ls'
 Bundle 'kylef/apiblueprint.vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'ekalinin/Dockerfile.vim'
+Bundle 'jparise/vim-graphql'
 
 " Ruby related
 "Bundle 'ecomba/vim-ruby-refactoring'
@@ -74,6 +76,7 @@ Bundle 'edsono/vim-matchit'
 Bundle 'omh/Kwbd.vim'
 Bundle 'sickill/vim-pasta'
 Bundle 'sjl/gundo.vim'
+Bundle 'kana/vim-fakeclip'
 
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-endwise'
@@ -163,15 +166,15 @@ set colorcolumn=+1
 set showcmd
 
 " colorscheme
-"if $SSH_CONNECTION && &t_Co < 256
-"  colorscheme koehler
-"else
-"  set t_Co=256
-"  let g:seoul256_background = 236
-"  colorscheme seoul256
-"endif
-"
-colorscheme hybrid_material
+if $SSH_CONNECTION && &t_Co < 256
+ colorscheme hybrid_material
+else
+ set t_Co=256
+ let g:seoul256_background = 236
+ colorscheme seoul256
+endif
+
+" colorscheme hybrid_material
 
 " enable filetype detection and filetype-specific plugins and indenting
 filetype plugin indent on
@@ -324,16 +327,11 @@ au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Capfile,Gu
 " explicitly set filetype to slim for slim view files (not sure why it's needed...)
 au BufRead,BufNewFile {*.html.slim} set filetype=slim
 
-" 4 spaces for TAB in CSS files
-autocmd BufEnter *.css setlocal softtabstop=4 shiftwidth=4
-
-" 2 spaces for TAB in JS files
-autocmd User Rails/**/*.js set softtabstop=2
-autocmd User Rails/**/*.js set tabstop=2
-autocmd User Rails/**/*.js set shiftwidth=2
-
 " set various characters to be treated as a part of words
 autocmd FileType lisp,clojure,html,xml,xhtml,haml,eruby,css,scss,sass,javascript,coffee setlocal iskeyword+=-,$,#
+
+" JSX
+let g:jsx_ext_required = 0
 
 
 
@@ -698,10 +696,10 @@ map <leader>W :SudoWrite<cr>
 map <leader>rr :.Rake<cr>
 
 " system clipboard interaction
-noremap <leader>y "*y
-noremap <leader>Y "*y$
-noremap <leader>p :set paste<cr>"*p<cr>:set nopaste<cr>
-noremap <leader>P :set paste<cr>"*P<cr>:set nopaste<cr>
+noremap <leader>y "&y
+noremap <leader>Y "&y$
+noremap <leader>p :set paste<cr>"&p<cr>:set nopaste<cr>
+noremap <leader>P :set paste<cr>"&P<cr>:set nopaste<cr>
 
 " easier splits
 noremap <leader>s <C-w>s
