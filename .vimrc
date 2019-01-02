@@ -1,121 +1,105 @@
 set nocompatible              " be iMproved, required
-filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
 " file navigation/management
-Bundle 'kien/ctrlp.vim'
-Bundle 'tpope/vim-eunuch'
-Bundle 'tpope/vim-vinegar'
-Bundle 'pbrisbin/vim-mkdir'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-vinegar'
+Plug 'pbrisbin/vim-mkdir'
 
 " git related
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-git'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-git'
 
 " additional syntax files
-"Bundle 'Keithbsmiley/rspec.vim'
-"Bundle 'kchmck/vim-coffee-script'
-"Bundle 'mmalecki/vim-node.js'
-"Bundle 'mustache/vim-mustache-handlebars'
-"Bundle 'heartsentwined/vim-emblem'
-Bundle 'pangloss/vim-javascript'
-Bundle 'mxw/vim-jsx'
-"Bundle 'slim-template/vim-slim'
-"Bundle 'tpope/vim-haml'
-"Bundle 'tpope/vim-markdown'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'sheerun/vim-polyglot'
-Bundle 'gkz/vim-ls'
-Bundle 'kylef/apiblueprint.vim'
-Bundle 'mattn/emmet-vim'
-Bundle 'ekalinin/Dockerfile.vim'
-Bundle 'jparise/vim-graphql'
+"Plug 'Keithbsmiley/rspec.vim'
+"Plug 'kchmck/vim-coffee-script'
+"Plug 'mmalecki/vim-node.js'
+"Plug 'mustache/vim-mustache-handlebars'
+"Plug 'heartsentwined/vim-emblem'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+"Plug 'slim-template/vim-slim'
+"Plug 'tpope/vim-haml'
+"Plug 'tpope/vim-markdown'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'gkz/vim-ls'
+Plug 'kylef/apiblueprint.vim'
+Plug 'mattn/emmet-vim'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'jparise/vim-graphql'
 
 " Ruby related
-"Bundle 'ecomba/vim-ruby-refactoring'
-"Bundle 'tpope/vim-bundler'
-"Bundle 'tpope/vim-rails'
-"Bundle 'tpope/vim-rake'
-"Bundle 'tpope/vim-rvm'
+"Plug 'ecomba/vim-ruby-refactoring'
+"Plug 'tpope/vim-bundler'
+"Plug 'tpope/vim-rails'
+"Plug 'tpope/vim-rake'
+"Plug 'tpope/vim-rvm'
 
 " text objects
-Bundle 'kana/vim-textobj-user'
-Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'bootleq/vim-textobj-rubysymbol'
-Bundle 'michaeljsmith/vim-indent-object'
+Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'bootleq/vim-textobj-rubysymbol'
+Plug 'michaeljsmith/vim-indent-object'
 
 " motions
-Bundle 'bkad/CamelCaseMotion'
+Plug 'bkad/CamelCaseMotion'
 
 " code completion
-"Bundle 'Valloric/YouCompleteMe'
-"Bundle 'pjg/eclim.vim'
+"Plug 'Valloric/YouCompleteMe'
+"Plug 'pjg/eclim.vim'
 
 " searching
-Bundle 'rking/ag.vim'
-Bundle 'nelstrom/vim-visual-star-search'
+Plug 'rking/ag.vim'
+Plug 'nelstrom/vim-visual-star-search'
 
 " general text-editing improvements
-Bundle 'AndrewRadev/splitjoin.vim'
-Bundle 'Raimondi/delimitMate'
-Bundle 'godlygeek/tabular'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'itspriddle/vim-stripper'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'Raimondi/delimitMate'
+Plug 'godlygeek/tabular'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tomtom/tcomment_vim'
+Plug 'itspriddle/vim-stripper'
 
 " general vim improvements
-Bundle 'edsono/vim-matchit'
-Bundle 'omh/Kwbd.vim'
-Bundle 'sickill/vim-pasta'
-Bundle 'sjl/gundo.vim'
-Bundle 'kana/vim-fakeclip'
+Plug 'edsono/vim-matchit'
+Plug 'omh/Kwbd.vim'
+Plug 'sickill/vim-pasta'
+Plug 'sjl/gundo.vim'
+Plug 'kana/vim-fakeclip'
 
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-ragtag'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-speeddating'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'justinmk/vim-sneak'
-Bundle 'nelstrom/vim-qargs'
-Bundle 'nathanaelkane/vim-indent-guides'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'justinmk/vim-sneak'
+Plug 'nelstrom/vim-qargs'
+Plug 'nathanaelkane/vim-indent-guides'
 
 " statusline (and related)
-Bundle 'vim-airline/vim-airline-themes'
-Bundle 'airblade/vim-gitgutter'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter'
 
 " external applications
-"Bundle 'rizzatti/funcoo.vim'
-"Bundle 'rizzatti/dash.vim'
+"Plug 'rizzatti/funcoo.vim'
+"Plug 'rizzatti/dash.vim'
 
 " color schemes
-Bundle 'junegunn/seoul256.vim'
-Bundle 'flazz/vim-colorschemes'
+Plug 'junegunn/seoul256.vim'
+Plug 'flazz/vim-colorschemes'
 
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+call plug#end()
 
 
 " BASIC SETTINGS
