@@ -14,5 +14,7 @@ alias docker-remove-untagged-images='docker images -q --filter "dangling=true" |
 alias docker-remove-dangling-volumes='docker volume ls -qf dangling=true | xargs -r docker volume rm'
 
 alias k='kubectl'
+alias mk='minikube'
 alias kps='k get po -Lapp -Ltier -Lenv'
 alias kubectl-remove-evicted-pods="kubectl get po --no-headers | grep Evicted | awk '{print \"po/\" \$1}' | xargs -r kubectl delete"
+alias kube-insense="gcloud container clusters get-credentials insense-1"
