@@ -8,6 +8,8 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'tpope/vim-sensible'
+
 " file navigation/management
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-eunuch'
@@ -44,6 +46,11 @@ Plug 'jparise/vim-graphql'
 "Plug 'tpope/vim-rake'
 "Plug 'tpope/vim-rvm'
 
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
 " text objects
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
@@ -54,8 +61,14 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'bkad/CamelCaseMotion'
 
 " code completion
-"Plug 'Valloric/YouCompleteMe'
-"Plug 'pjg/eclim.vim'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
 
 " searching
 Plug 'rking/ag.vim'
@@ -70,12 +83,10 @@ Plug 'tomtom/tcomment_vim'
 Plug 'itspriddle/vim-stripper'
 
 " general vim improvements
-Plug 'edsono/vim-matchit'
 Plug 'omh/Kwbd.vim'
 Plug 'sickill/vim-pasta'
 Plug 'sjl/gundo.vim'
 Plug 'kana/vim-fakeclip'
-
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-ragtag'
@@ -86,6 +97,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'justinmk/vim-sneak'
 Plug 'nelstrom/vim-qargs'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'junegunn/fzf'
 
 " statusline (and related)
 Plug 'vim-airline/vim-airline-themes'
@@ -428,6 +440,19 @@ let g:rbpt_colorpairs = [
     \ ['red',         'firebrick3'],
     \ ]
 
+" [LanguageClient-neovim]
+" https://github.com/haskell/haskell-ide-engine#installation-with-stack-on-linux
+set rtp+=~/.vim/plugged/LanguageClient-neovim
+let g:LanguageClient_serverCommands = { 'haskell': ['hie-wrapper'] }
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+map <Leader>lk :call LanguageClient#textDocument_hover()<CR>
+map <Leader>lg :call LanguageClient#textDocument_definition()<CR>
+map <Leader>lr :call LanguageClient#textDocument_rename()<CR>
+map <Leader>lf :call LanguageClient#textDocument_formatting()<CR>
+map <Leader>lb :call LanguageClient#textDocument_references()<CR>
+map <Leader>la :call LanguageClient#textDocument_codeAction()<CR>
+map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
+
 
 " KEY MAPPINGS
 
@@ -445,9 +470,9 @@ imap <F4> <esc><F4>
 vmap <F4> <esc><F4>
 
 " <F5> to flush CtrlP cache
-map <F5> :ClearCtrlPCache<cr>
-imap <F5> <esc><F5>
-vmap <F5> <esc><F5>
+" map <F5> :ClearCtrlPCache<cr>
+" imap <F5> <esc><F5>
+" vmap <F5> <esc><F5>
 
 " <F6> for gundo.vim
 nmap <F6> :GundoToggle<cr><cr>
