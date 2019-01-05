@@ -46,10 +46,14 @@ Plug 'jparise/vim-graphql'
 "Plug 'tpope/vim-rake'
 "Plug 'tpope/vim-rvm'
 
+" Haskell related
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+if has('nvim')
+  Plug 'parsonsmatt/intero-neovim'
+endif
 
 " text objects
 Plug 'kana/vim-textobj-user'
@@ -98,6 +102,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'nelstrom/vim-qargs'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'junegunn/fzf'
+Plug 'neomake/neomake'
 
 " statusline (and related)
 Plug 'vim-airline/vim-airline-themes'
@@ -453,11 +458,49 @@ map <Leader>lb :call LanguageClient#textDocument_references()<CR>
 map <Leader>la :call LanguageClient#textDocument_codeAction()<CR>
 map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
 
+" [intero-neovim]
+augroup interoMaps
+  au!
+
+  " Open intero/GHCi split horizontally
+  au FileType haskell nnoremap <silent> <leader>io :InteroOpen<CR>
+  " Open intero/GHCi split vertically
+  au FileType haskell nnoremap <silent> <leader>iov :InteroOpen<CR><C-W>H
+  au FileType haskell nnoremap <silent> <leader>ih :InteroHide<CR>
+
+  " Automatically reload on save
+  au BufWritePost *.hs InteroReload
+
+  " Load individual modules
+  au FileType haskell nnoremap <silent> <leader>il :InteroLoadCurrentModule<CR>
+  au FileType haskell nnoremap <silent> <leader>if :InteroLoadCurrentFile<CR>
+
+  " Type-related information
+  au FileType haskell map <silent> <leader>t <Plug>InteroGenericType
+  au FileType haskell map <silent> <leader>T <Plug>InteroType
+  au FileType haskell nnoremap <silent> <leader>it :InteroTypeInsert<CR>
+
+  " Navigation
+  au FileType haskell nnoremap <silent> <leader>jd :InteroGoToDef<CR>
+
+  " Managing targets
+  " Prompts you to enter targets (no silent):
+  au FileType haskell nnoremap <leader>ist :InteroSetTargets<SPACE>
+augroup END
+
+" Enable type information on hover (when holding cursor at point for ~1 second).
+let g:intero_type_on_hover = 1
+
 
 " KEY MAPPINGS
 
 " have Y behave analogously to D and C rather than to dd and cc (which is already done by yy)
 noremap Y y$
+
+" <F1> to open Intero REPL
+map <F1> :InteroOpen<cr>
+imap <F1> <esc><F1>
+vmap <F1> <esc><F1>
 
 " <F2> to save current session in tmp/current.vim
 map <F2> :mksession! tmp/current.vim<cr>
@@ -677,7 +720,7 @@ let localmapleader = "\\"
 nmap <leader>a ggVG
 
 " run Dash (on MAC) to search for word under cursor
-nmap <silent> <leader>d <Plug>DashSearch
+" nmap <silent> <leader>d <Plug>DashSearch
 
 " upper/lower word
 nmap <leader>u mQviwU'Q
@@ -712,7 +755,7 @@ map <leader>w :w<cr>
 map <leader>W :SudoWrite<cr>
 
 " [vim-rails] Rake
-map <leader>rr :.Rake<cr>
+" map <leader>rr :.Rake<cr>
 
 " system clipboard interaction
 noremap <leader>y "&y
