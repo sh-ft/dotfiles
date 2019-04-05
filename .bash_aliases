@@ -1,6 +1,8 @@
 alias git='hub'
 alias g='git'
 
+alias vim='nvim'
+
 alias dc='docker-compose'
 alias dcr='docker-compose run --rm'
 alias dm='docker-machine'

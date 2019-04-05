@@ -11,7 +11,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 
 " file navigation/management
-Plug 'kien/ctrlp.vim'
+" Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-vinegar'
 Plug 'pbrisbin/vim-mkdir'
@@ -101,7 +102,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'justinmk/vim-sneak'
 Plug 'nelstrom/vim-qargs'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'junegunn/fzf'
 Plug 'neomake/neomake'
 
 " statusline (and related)
@@ -335,6 +335,9 @@ autocmd FileType lisp,clojure,html,xml,xhtml,haml,eruby,css,scss,sass,javascript
 let g:jsx_ext_required = 0
 
 
+autocmd FileType go set tabstop=2
+autocmd FileType go set noexpandtab
+
 
 " ADVANCED SETTINGS
 
@@ -361,8 +364,8 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 
-  let g:agprg='ag --column --smart-case'
-  let g:aghighlight=1
+  let g:ag_prg='ag --column --smart-case'
+  let g:ag_highlight=1
 endif
 
 " [autoclose.vim]
@@ -384,6 +387,16 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\/tmp',
   \ 'file': '\/public/stylesheets/.*css$'
   \ }
+
+" [fzf.vim]
+let g:fzf_nvim_statusline = 0
+nnoremap <c-p> :FZF<cr>
+augroup fzf
+  autocmd!
+  autocmd! FileType fzf
+  autocmd  FileType fzf set laststatus=0 noshowmode noruler
+    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+augroup END
 
 " [fugitive.vim] auto clean fugitive buffers
 au BufReadPost fugitive://* set bufhidden=delete
@@ -489,7 +502,7 @@ augroup interoMaps
 augroup END
 
 " Enable type information on hover (when holding cursor at point for ~1 second).
-let g:intero_type_on_hover = 1
+" let g:intero_type_on_hover = 1
 
 
 " KEY MAPPINGS
