@@ -48,13 +48,13 @@ Plug 'jparise/vim-graphql'
 "Plug 'tpope/vim-rvm'
 
 " Haskell related
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-if has('nvim')
-  Plug 'parsonsmatt/intero-neovim'
-endif
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
+" if has('nvim')
+"   Plug 'parsonsmatt/intero-neovim'
+" endif
 
 " text objects
 Plug 'kana/vim-textobj-user'
@@ -64,6 +64,7 @@ Plug 'michaeljsmith/vim-indent-object'
 
 " motions
 Plug 'bkad/CamelCaseMotion'
+Plug 'easymotion/vim-easymotion'
 
 " code completion
 if has('nvim')
@@ -73,7 +74,7 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 
 " searching
 Plug 'rking/ag.vim'
@@ -460,46 +461,46 @@ let g:rbpt_colorpairs = [
 
 " [LanguageClient-neovim]
 " https://github.com/haskell/haskell-ide-engine#installation-with-stack-on-linux
-set rtp+=~/.vim/plugged/LanguageClient-neovim
-let g:LanguageClient_serverCommands = { 'haskell': ['hie-wrapper'] }
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-map <Leader>lk :call LanguageClient#textDocument_hover()<CR>
-map <Leader>lg :call LanguageClient#textDocument_definition()<CR>
-map <Leader>lr :call LanguageClient#textDocument_rename()<CR>
-map <Leader>lf :call LanguageClient#textDocument_formatting()<CR>
-map <Leader>lb :call LanguageClient#textDocument_references()<CR>
-map <Leader>la :call LanguageClient#textDocument_codeAction()<CR>
-map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
+" set rtp+=~/.vim/plugged/LanguageClient-neovim
+" let g:LanguageClient_serverCommands = { 'haskell': ['hie-wrapper'] }
+" nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" map <Leader>lk :call LanguageClient#textDocument_hover()<CR>
+" map <Leader>lg :call LanguageClient#textDocument_definition()<CR>
+" map <Leader>lr :call LanguageClient#textDocument_rename()<CR>
+" map <Leader>lf :call LanguageClient#textDocument_formatting()<CR>
+" map <Leader>lb :call LanguageClient#textDocument_references()<CR>
+" map <Leader>la :call LanguageClient#textDocument_codeAction()<CR>
+" map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
 
 " [intero-neovim]
-augroup interoMaps
-  au!
-
-  " Open intero/GHCi split horizontally
-  au FileType haskell nnoremap <silent> <leader>io :InteroOpen<CR>
-  " Open intero/GHCi split vertically
-  au FileType haskell nnoremap <silent> <leader>iov :InteroOpen<CR><C-W>H
-  au FileType haskell nnoremap <silent> <leader>ih :InteroHide<CR>
-
-  " Automatically reload on save
-  au BufWritePost *.hs InteroReload
-
-  " Load individual modules
-  au FileType haskell nnoremap <silent> <leader>il :InteroLoadCurrentModule<CR>
-  au FileType haskell nnoremap <silent> <leader>if :InteroLoadCurrentFile<CR>
-
-  " Type-related information
-  au FileType haskell map <silent> <leader>t <Plug>InteroGenericType
-  au FileType haskell map <silent> <leader>T <Plug>InteroType
-  au FileType haskell nnoremap <silent> <leader>it :InteroTypeInsert<CR>
-
-  " Navigation
-  au FileType haskell nnoremap <silent> <leader>jd :InteroGoToDef<CR>
-
-  " Managing targets
-  " Prompts you to enter targets (no silent):
-  au FileType haskell nnoremap <leader>ist :InteroSetTargets<SPACE>
-augroup END
+" augroup interoMaps
+"   au!
+"
+"   " Open intero/GHCi split horizontally
+"   au FileType haskell nnoremap <silent> <leader>io :InteroOpen<CR>
+"   " Open intero/GHCi split vertically
+"   au FileType haskell nnoremap <silent> <leader>iov :InteroOpen<CR><C-W>H
+"   au FileType haskell nnoremap <silent> <leader>ih :InteroHide<CR>
+"
+"   " Automatically reload on save
+"   au BufWritePost *.hs InteroReload
+"
+"   " Load individual modules
+"   au FileType haskell nnoremap <silent> <leader>il :InteroLoadCurrentModule<CR>
+"   au FileType haskell nnoremap <silent> <leader>if :InteroLoadCurrentFile<CR>
+"
+"   " Type-related information
+"   au FileType haskell map <silent> <leader>t <Plug>InteroGenericType
+"   au FileType haskell map <silent> <leader>T <Plug>InteroType
+"   au FileType haskell nnoremap <silent> <leader>it :InteroTypeInsert<CR>
+"
+"   " Navigation
+"   au FileType haskell nnoremap <silent> <leader>jd :InteroGoToDef<CR>
+"
+"   " Managing targets
+"   " Prompts you to enter targets (no silent):
+"   au FileType haskell nnoremap <leader>ist :InteroSetTargets<SPACE>
+" augroup END
 
 " Enable type information on hover (when holding cursor at point for ~1 second).
 " let g:intero_type_on_hover = 1
@@ -511,9 +512,9 @@ augroup END
 noremap Y y$
 
 " <F1> to open Intero REPL
-map <F1> :InteroOpen<cr>
-imap <F1> <esc><F1>
-vmap <F1> <esc><F1>
+" map <F1> :InteroOpen<cr>
+" imap <F1> <esc><F1>
+" vmap <F1> <esc><F1>
 
 " <F2> to save current session in tmp/current.vim
 map <F2> :mksession! tmp/current.vim<cr>
@@ -813,6 +814,13 @@ endfunction
 " camelcasemotion
 call camelcasemotion#CreateMotionMappings('<leader>')
 
+" easymotion
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_smartcase = 1
+nmap s <Plug>(easymotion-overwin-f2)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
 
 " STATUSLINE
 
@@ -854,4 +862,3 @@ function! AirlineThemePatch(palette)
 endfunction
 
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
-
