@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$PATH:$HOME/.stack/programs/x86_64-linux/ghc-8.0.1/bin:$HOME/go/bin:$HOME/.local/bin
+export PATH=$PATH:$HOME/.stack/programs/x86_64-linux/ghc-8.0.1/bin:$HOME/go/bin:$HOME/.local/bin:/snap/bin
 
 # Path to your oh-my-zsh installation.
   export ZSH=/home/shft/.oh-my-zsh
