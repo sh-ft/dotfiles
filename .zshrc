@@ -90,8 +90,13 @@ source ~/.bash_aliases
 export NVM_DIR="/home/shft/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-source <(kubectl completion zsh)
+[ -x "$(command -v kubectl)" ] && source <(kubectl completion zsh)
 
 export GOPATH="/home/shft/go"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# if [ -d "$HOME/local/adb-fastboot/platform-tools" ] ; then
+#   export PATH="$HOME/local/adb-fastboot/platform-tools:$PATH"
+# fi
+if [ -e /home/shft/.nix-profile/etc/profile.d/nix.sh ]; then . /home/shft/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

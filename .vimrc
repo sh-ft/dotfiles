@@ -12,7 +12,8 @@ Plug 'tpope/vim-sensible'
 
 " file navigation/management
 " Plug 'kien/ctrlp.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-vinegar'
 Plug 'pbrisbin/vim-mkdir'
@@ -39,6 +40,8 @@ Plug 'kylef/apiblueprint.vim'
 Plug 'mattn/emmet-vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'jparise/vim-graphql'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 
 " Ruby related
 "Plug 'ecomba/vim-ruby-refactoring'
@@ -48,6 +51,9 @@ Plug 'jparise/vim-graphql'
 "Plug 'tpope/vim-rvm'
 
 " Haskell related
+Plug 'neovimhaskell/haskell-vim'
+Plug 'itchyny/vim-haskell-indent'
+Plug 'enomsg/vim-haskellConcealPlus'
 " Plug 'autozimu/LanguageClient-neovim', {
 "     \ 'branch': 'next',
 "     \ 'do': 'bash install.sh',
@@ -116,6 +122,7 @@ Plug 'airblade/vim-gitgutter'
 " color schemes
 Plug 'junegunn/seoul256.vim'
 Plug 'flazz/vim-colorschemes'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -169,11 +176,14 @@ set showcmd
 
 " colorscheme
 if $SSH_CONNECTION && &t_Co < 256
- colorscheme hybrid_material
+  colorscheme hybrid_material
 else
- set t_Co=256
- let g:seoul256_background = 236
- colorscheme seoul256
+  set termguicolors
+  set background=dark
+  colorscheme gruvbox
+  " set t_Co=256
+  " let g:seoul256_background = 236
+  " colorscheme seoul256
 endif
 
 " colorscheme hybrid_material
@@ -284,6 +294,10 @@ set fcs+=vert:\ " the space after the backslash is intentional
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
 
+setlocal conceallevel=2
+set concealcursor=nciv
+
+
 " SYNTAX HIGHLIGHTING
 
 " syntax highlight on
@@ -293,7 +307,7 @@ syntax on
 let ruby_no_expensive=1
 
 " use the old Regexp engine (used by the syntax highlighting, for example) (this makes vim about 100x faster)
-set regexpengine=1
+" set regexpengine=1
 
 
 " FILE TYPES
@@ -391,7 +405,7 @@ let g:ctrlp_custom_ignore = {
 
 " [fzf.vim]
 let g:fzf_nvim_statusline = 0
-nnoremap <c-p> :FZF<cr>
+nnoremap <c-p> :GFiles<cr>
 augroup fzf
   autocmd!
   autocmd! FileType fzf
@@ -458,6 +472,17 @@ let g:rbpt_colorpairs = [
     \ ['darkred',     'DarkOrchid3'],
     \ ['red',         'firebrick3'],
     \ ]
+
+" [haskell-vim]
+let g:haskell_indent_disable = 1
+
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 
 " [LanguageClient-neovim]
 " https://github.com/haskell/haskell-ide-engine#installation-with-stack-on-linux
