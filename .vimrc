@@ -122,6 +122,7 @@ Plug 'airblade/vim-gitgutter'
 " color schemes
 Plug 'junegunn/seoul256.vim'
 Plug 'flazz/vim-colorschemes'
+Plug 'wadackel/vim-dogrun'
 Plug 'morhetz/gruvbox'
 
 call plug#end()
@@ -180,13 +181,11 @@ if $SSH_CONNECTION && &t_Co < 256
 else
   set termguicolors
   set background=dark
-  colorscheme gruvbox
   " set t_Co=256
   " let g:seoul256_background = 236
   " colorscheme seoul256
+  colorscheme gruvbox
 endif
-
-" colorscheme hybrid_material
 
 " enable filetype detection and filetype-specific plugins and indenting
 filetype plugin indent on

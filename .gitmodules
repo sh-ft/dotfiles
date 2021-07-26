@@ -2,3 +2,6 @@
     path = .vim/bundle/vundle
     url = https://github.com/gmarik/vundle.git
     ignore = dirty
+[submodule ".tmux-themepack"]
+	path = .tmux-themepack
+	url = https://github.com/jimeh/tmux-themepack.git

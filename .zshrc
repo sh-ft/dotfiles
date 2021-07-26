@@ -3,7 +3,7 @@
 export PATH=$PATH:$HOME/.stack/programs/x86_64-linux/ghc-8.0.1/bin:$HOME/go/bin:$HOME/.local/bin:/snap/bin
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/shft/.oh-my-zsh
+export ZSH=/home/shft/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -96,7 +96,6 @@ export GOPATH="/home/shft/go"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# if [ -d "$HOME/local/adb-fastboot/platform-tools" ] ; then
-#   export PATH="$HOME/local/adb-fastboot/platform-tools:$PATH"
-# fi
-if [ -e /home/shft/.nix-profile/etc/profile.d/nix.sh ]; then . /home/shft/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+[ -f ~/dotfiles/zsh/kubectl.zsh ] && source ~/dotfiles/zsh/kubectl.zsh
+
+source ~/.nix-profile/etc/profile.d/nix.sh
