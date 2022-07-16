@@ -53,7 +53,7 @@ Plug 'peitalin/vim-jsx-typescript'
 " Haskell related
 Plug 'neovimhaskell/haskell-vim'
 Plug 'itchyny/vim-haskell-indent'
-Plug 'enomsg/vim-haskellConcealPlus'
+" Plug 'enomsg/vim-haskellConcealPlus'
 " Plug 'autozimu/LanguageClient-neovim', {
 "     \ 'branch': 'next',
 "     \ 'do': 'bash install.sh',
@@ -112,6 +112,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'neomake/neomake'
 
 " statusline (and related)
+" Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 
@@ -181,9 +182,11 @@ if $SSH_CONNECTION && &t_Co < 256
 else
   set termguicolors
   set background=dark
+
   " set t_Co=256
   " let g:seoul256_background = 236
   " colorscheme seoul256
+
   colorscheme gruvbox
 endif
 
