@@ -75,6 +75,7 @@ Plug 'easymotion/vim-easymotion'
 " code completion
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 else
   Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
