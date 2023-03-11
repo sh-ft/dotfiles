@@ -19,4 +19,3 @@ alias k='kubectl'
 alias mk='minikube'
 alias kps='k get po -Lapp -Ltier -Lenv'
 alias kubectl-remove-evicted-pods="kubectl get po --no-headers | grep Evicted | awk '{print \"po/\" \$1}' | xargs -r kubectl delete"
-alias kube-insense="gcloud container clusters get-credentials insense-1"

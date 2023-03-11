@@ -98,4 +98,4 @@ export GOPATH="/home/shft/go"
 
 [ -f ~/dotfiles/zsh/kubectl.zsh ] && source ~/dotfiles/zsh/kubectl.zsh
 
-source ~/.nix-profile/etc/profile.d/nix.sh
+[ -s ~/.nix-profile/etc/profile.d/nix.sh ] && source ~/.nix-profile/etc/profile.d/nix.sh
