@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$PATH:$HOME/.stack/programs/x86_64-linux/ghc-8.0.1/bin:$HOME/go/bin:$HOME/.local/bin:/snap/bin
+export PATH=$PATH:$HOME/.stack/programs/x86_64-linux/ghc-tinfo6-8.8.4/bin:$HOME/local/haskell-language-server-1.8.0.0/bin:$HOME/go/bin:$HOME/.local/bin:/snap/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/shft/.oh-my-zsh
@@ -87,9 +87,6 @@ source $ZSH/oh-my-zsh.sh
 
 source ~/.bash_aliases
 
-export NVM_DIR="/home/shft/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
 [ -x "$(command -v kubectl)" ] && source <(kubectl completion zsh)
 
 export GOPATH="/home/shft/go"
@@ -99,3 +96,7 @@ export GOPATH="/home/shft/go"
 [ -f ~/dotfiles/zsh/kubectl.zsh ] && source ~/dotfiles/zsh/kubectl.zsh
 
 [ -s ~/.nix-profile/etc/profile.d/nix.sh ] && source ~/.nix-profile/etc/profile.d/nix.sh
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -118,6 +118,7 @@ Plug 'junegunn/seoul256.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'wadackel/vim-dogrun'
 Plug 'morhetz/gruvbox'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 call plug#end()
 
@@ -180,7 +181,8 @@ else
   " let g:seoul256_background = 236
   " colorscheme seoul256
 
-  colorscheme gruvbox
+  " colorscheme gruvbox
+  colorscheme tokyonight-moon
 endif
 
 " enable filetype detection and filetype-specific plugins and indenting
