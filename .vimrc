@@ -61,6 +61,7 @@ Plug 'itchyny/vim-haskell-indent'
 " if has('nvim')
 "   Plug 'parsonsmatt/intero-neovim'
 " endif
+" Plug 'mrcjkb/haskell-tools.nvim', {'branch': '1.x.x'}
 
 " text objects
 Plug 'kana/vim-textobj-user'
@@ -78,6 +79,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " searching
 Plug 'rking/ag.vim'
 Plug 'nelstrom/vim-visual-star-search'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 
 " general text-editing improvements
 Plug 'AndrewRadev/splitjoin.vim'
@@ -103,6 +105,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'nelstrom/vim-qargs'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'neomake/neomake'
+Plug 'nvim-lua/plenary.nvim'
 
 " statusline (and related)
 " Plug 'vim-airline/vim-airline'
@@ -413,12 +416,12 @@ augroup END
 au BufReadPost fugitive://* set bufhidden=delete
 
 
-" [vim-gitgutter] always show sign column (by adding a dummy sign)
-function! ShowSignColumn()
-  sign define dummy
-  execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
-endfunc
-au BufRead,BufNewFile * call ShowSignColumn()
+" " [vim-gitgutter] always show sign column (by adding a dummy sign)
+" function! ShowSignColumn()
+"   sign define dummy
+"   execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
+" endfunc
+" au BufRead,BufNewFile * call ShowSignColumn()
 
 " [vim-gitgutter] disable eager execution (will only run on file read/write))
 let g:gitgutter_eager = 0
@@ -887,12 +890,12 @@ let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
 " [coc.nvim]
 
-" if has("nvim-0.5.0") || has("patch-8.1.1564")
-"   " Recently vim can merge signcolumn and number column into one
-"   set signcolumn=number
-" else
-"   set signcolumn=yes
-" endif
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -917,8 +920,8 @@ endif
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
-" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-"                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.

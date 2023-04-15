@@ -1,6 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$PATH:$HOME/.stack/programs/x86_64-linux/ghc-tinfo6-8.8.4/bin:$HOME/local/haskell-language-server-1.8.0.0/bin:$HOME/go/bin:$HOME/.local/bin:/snap/bin
+export PATH=$PATH:$HOME/go/bin:$HOME/.local/bin:/snap/bin
+# export PATH=$PATH:$HOME/.stack/programs/x86_64-linux/ghc-tinfo6-8.8.4/bin:$HOME/local/haskell-language-server-1.8.0.0/bin:$HOME/go/bin:$HOME/.local/bin:/snap/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/shft/.oh-my-zsh
@@ -100,3 +101,7 @@ export GOPATH="/home/shft/go"
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -f "/home/shft/.ghcup/env" ] && source "/home/shft/.ghcup/env" # ghcup-env
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
