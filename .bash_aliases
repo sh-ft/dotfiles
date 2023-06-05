@@ -1,4 +1,3 @@
-eval "$(hub alias -s)"
 alias g='git'
 
 alias vim='nvim'

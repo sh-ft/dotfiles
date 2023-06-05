@@ -796,6 +796,7 @@ map <leader>W :SudoWrite<cr>
 " map <leader>rr :.Rake<cr>
 
 " system clipboard interaction
+set clipboard=unnamedplus
 noremap <leader>y "&y
 noremap <leader>Y "&y$
 noremap <leader>p :set paste<cr>"&p<cr>:set nopaste<cr>
