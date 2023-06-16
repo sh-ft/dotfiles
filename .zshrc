@@ -105,11 +105,11 @@ source ~/.bash_aliases
 
 [ -x "$(command -v kubectl)" ] && source <(kubectl completion zsh)
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 
-[ -f ~/dotfiles/zsh/kubectl.zsh ] && source ~/dotfiles/zsh/kubectl.zsh
+[ -f $HOME/dotfiles/zsh/kubectl.zsh ] && source $HOME/dotfiles/zsh/kubectl.zsh
 
-[ -s ~/.nix-profile/etc/profile.d/nix.sh ] && source ~/.nix-profile/etc/profile.d/nix.sh
+[ -s $HOME/.nix-profile/etc/profile.d/nix.sh ] && source $HOME/.nix-profile/etc/profile.d/nix.sh
 
 export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/opt/homebrew/Cellar/libffi/3.4.4/lib/pkgconfig"
 
@@ -117,7 +117,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-[ -f "~/.ghcup/env" ] && source "~/.ghcup/env" # ghcup-env
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
